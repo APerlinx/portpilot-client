@@ -7,7 +7,7 @@ const Header = () => {
         <div className="flex justify-center items-center">
           <img src={logo} alt="PortPilot Logo" className="h-12" />
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-            Port<span className="text-[#0066FF]">PilotX</span>
+            Port<span className="text-[#0066FF]">Pilot</span>
           </h1>
         </div>
 
