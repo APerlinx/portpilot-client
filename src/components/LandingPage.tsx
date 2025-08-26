@@ -1,5 +1,8 @@
 import wave from '../assets/wave-haikei.svg'
 import sideImage from '../assets/hero-image.svg'
+import Feature from './Feature'
+import Step from './Step'
+import Testimonial from './Testimonial'
 
 const LandingPage = () => {
   return (
@@ -166,58 +169,5 @@ const LandingPage = () => {
     </main>
   )
 }
-
-/* Small presentational helpers */
-const Feature = ({
-  emoji,
-  title,
-  text,
-}: {
-  emoji: string
-  title: string
-  text: string
-}) => (
-  <div className="rounded-2xl border border-gray-200 p-6 shadow-sm transition hover:shadow-md">
-    <div className="text-3xl">{emoji}</div>
-    <h3 className="mt-3 text-lg font-semibold">{title}</h3>
-    <p className="mt-2 text-sm text-gray-600">{text}</p>
-  </div>
-)
-
-const Step = ({
-  num,
-  title,
-  children,
-}: {
-  num: number
-  title: string
-  children: React.ReactNode
-}) => (
-  <li className="relative rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
-    <div className="absolute -top-3 left-6 flex h-8 w-8 items-center justify-center rounded-full bg-[#0066FF] text-sm font-bold text-white">
-      {num}
-    </div>
-    <h3 className="mt-2 text-base font-semibold">{title}</h3>
-    <p className="mt-2 text-sm text-gray-600">{children}</p>
-  </li>
-)
-
-const Testimonial = ({
-  quote,
-  name,
-  role,
-}: {
-  quote: string
-  name: string
-  role: string
-}) => (
-  <figure className="rounded-2xl bg-gray-50 p-6 ring-1 ring-gray-200">
-    <blockquote className="text-gray-700">“{quote}”</blockquote>
-    <figcaption className="mt-4 text-sm">
-      <span className="font-semibold">{name}</span> —{' '}
-      <span className="text-gray-500">{role}</span>
-    </figcaption>
-  </figure>
-)
 
 export default LandingPage
