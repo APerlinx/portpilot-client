@@ -1,79 +1,223 @@
 import wave from '../assets/wave-haikei.svg'
-import reactsvg from '../assets/react.svg'
+import sideImage from '../assets/hero-image.svg'
+
 const LandingPage = () => {
   return (
-    <main>
+    <main className="text-gray-900 antialiased">
       {/* HERO */}
-      <section className="relative bg-[#0066FF] text-center overflow-hidden pt-28 min-h-screen">
-        <div className="grid grid-cols-2 px-4">
-          <div className="flex flex-col items-center justify-center ">
-            {' '}
-            <h2 className="text-5xl sm:text-6xl font-extrabold tracking-tight mb-6">
-              Turn Your Resume Into a{' '}
-              <span className="text-white">Live Portfolio</span>
-            </h2>
-            <p className="max-w-2xl mx-auto text-white mb-8">
-              Upload your CV and let ScriptumLab analyze, rewrite, and build a
+      <section className="relative overflow-hidden bg-[#0066FF]">
+        <div className="mx-auto grid min-h-[80vh] max-w-7xl grid-cols-1 items-center gap-10 px-6 py-24 md:min-h-[100vh] md:grid-cols-2">
+          {/* Left */}
+          <div className="text-center md:text-left">
+            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+              Turn your resume into a{' '}
+              <span className="text-black">Live Portfolio</span>
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-white/90 md:mx-0">
+              Upload your CV and let PortPilot analyze, rewrite, and build a
               modern website version of your professional story — automatically.
             </p>
-            <a
-              href="#cta"
-              className="inline-block px-8 py-4 rounded-lg bg-black text-white text-lg font-semibold hover:bg-blue-700 transition"
-            >
-              Generate My Site
-            </a>
+            <div className="mt-8 flex flex-col items-center gap-3 md:flex-row md:justify-start">
+              <a
+                href="#cta"
+                className="inline-flex items-center justify-center rounded-lg bg-black px-7 py-3 text-white shadow-lg transition hover:bg-gray-800"
+              >
+                Generate My Site
+              </a>
+              <a
+                href="#how"
+                className="inline-flex items-center justify-center rounded-lg bg-white/10 px-7 py-3 text-white ring-1 ring-white/30 transition hover:bg-white/20"
+              >
+                See how it works
+              </a>
+            </div>
           </div>
+
+          {/* Right */}
           <div className="flex items-center justify-center">
-            <img src={reactsvg} />
+            <img
+              src={sideImage}
+              alt="PortPilot generated portfolio preview"
+              className="h-auto w-[520px] max-w-full drop-shadow-xl"
+              loading="eager"
+            />
           </div>
         </div>
+
+        {/* Wave divider */}
+        <div className="pointer-events-none absolute bottom-0 left-0 w-full translate-y-1">
+          <img
+            src={wave}
+            alt=""
+            className="block h-32 w-full select-none object-cover md:h-40"
+          />
+        </div>
       </section>
-      <div className="">
-        <img src={wave} className="w-full h-full object-cover" />
-      </div>
-      {/* FEATURES */}
-      <section id="features" className=" bg-white">
-        <div className="container mx-auto max-w-6xl px-4 ">
-          <h3 className="text-3xl font-bold mb-12 text-center">Features</h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12">
-            <div className="text-center">
-              <div className="text-4xl mb-4">📄</div>
-              <h4 className="font-medium mb-2">Smart CV Parsing</h4>
-              <p className="text-gray-600 text-sm">
-                Upload PDF, DOCX or LinkedIn export — we extract everything you
-                need.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🎨</div>
-              <h4 className="font-medium mb-2">Beautiful Templates</h4>
-              <p className="text-gray-600 text-sm">
-                Clean responsive layouts that make you stand out.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🚀</div>
-              <h4 className="font-medium mb-2">Instant Publishing</h4>
-              <p className="text-gray-600 text-sm">
-                One-click deploy to your own live URL — no coding.
-              </p>
-            </div>
+
+      {/* TRUST / LOGOS */}
+      <section className="bg-white py-10">
+        <div className="mx-auto max-w-7xl px-6">
+          <p className="mb-6 text-center text-sm uppercase tracking-widest text-gray-500">
+            Portfolios that feel professional
+          </p>
+          <div className="grid grid-cols-2 items-center justify-items-center gap-6 opacity-70 sm:grid-cols-3 md:grid-cols-6">
+            <div className="h-8 w-24 rounded bg-gray-200" />
+            <div className="h-8 w-24 rounded bg-gray-200" />
+            <div className="h-8 w-24 rounded bg-gray-200" />
+            <div className="h-8 w-24 rounded bg-gray-200" />
+            <div className="h-8 w-24 rounded bg-gray-200" />
+            <div className="h-8 w-24 rounded bg-gray-200" />
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section id="cta" className="py-28 bg-gray-50 text-center">
-        <h3 className="text-4xl font-bold mb-6">Ready to stand out?</h3>
-        <a
-          href="#"
-          className="inline-block px-10 py-5 rounded-lg bg-blue-600 text-white text-lg font-semibold hover:bg-blue-700 transition"
-        >
-          Upload CV & Generate
-        </a>
+      {/* FEATURES */}
+      <section id="features" className="bg-white py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="text-center text-3xl font-bold">Features</h2>
+          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <Feature
+              emoji="📄"
+              title="Smart CV Parsing"
+              text="Upload PDF, DOCX or LinkedIn export — we extract roles, dates, skills, and achievements."
+            />
+            <Feature
+              emoji="🎨"
+              title="Beautiful Templates"
+              text="Clean, responsive themes with smart typography and spacing out of the box."
+            />
+            <Feature
+              emoji="🚀"
+              title="Instant Publishing"
+              text="Preview instantly, then deploy to a custom URL — no code needed."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section id="how" className="bg-gray-50 py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="text-center text-3xl font-bold">How it works</h2>
+          <ol className="mx-auto mt-12 grid max-w-4xl gap-8 sm:grid-cols-3">
+            <Step num={1} title="Upload">
+              Drag & drop your resume (PDF/DOCX). We parse structure & content.
+            </Step>
+            <Step num={2} title="Polish">
+              Pick a template. PortPilot rewrites blurbs for web readability.
+            </Step>
+            <Step num={3} title="Publish">
+              Preview live, tweak details, then deploy to your URL.
+            </Step>
+          </ol>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="text-center text-3xl font-bold">
+            Loved by candidates
+          </h2>
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
+            <Testimonial
+              quote="Went from PDF to a polished site in minutes — got 2 interviews the same week."
+              name="Maya K."
+              role="Frontend Developer"
+            />
+            <Testimonial
+              quote="The copy rewrite made my experience sound clear and impactful."
+              name="Daniel P."
+              role="Data Analyst"
+            />
+            <Testimonial
+              quote="Publishing to a custom URL was one click. Clean, fast, professional."
+              name="Avi S."
+              role="Product Designer"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section id="cta" className="bg-gray-50 py-24">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <h2 className="text-3xl font-extrabold">Ready to stand out?</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-gray-600">
+            Turn your static resume into a modern, mobile-friendly portfolio in
+            minutes.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href="#"
+              className="inline-flex items-center justify-center rounded-lg bg-[#0066FF] px-8 py-4 font-semibold text-white shadow-lg transition hover:brightness-95"
+            >
+              Upload CV & Generate
+            </a>
+            <a
+              href="#features"
+              className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 font-semibold text-gray-900 ring-1 ring-gray-300 transition hover:bg-gray-50"
+            >
+              Explore features
+            </a>
+          </div>
+        </div>
       </section>
     </main>
   )
 }
+
+/* Small presentational helpers */
+const Feature = ({
+  emoji,
+  title,
+  text,
+}: {
+  emoji: string
+  title: string
+  text: string
+}) => (
+  <div className="rounded-2xl border border-gray-200 p-6 shadow-sm transition hover:shadow-md">
+    <div className="text-3xl">{emoji}</div>
+    <h3 className="mt-3 text-lg font-semibold">{title}</h3>
+    <p className="mt-2 text-sm text-gray-600">{text}</p>
+  </div>
+)
+
+const Step = ({
+  num,
+  title,
+  children,
+}: {
+  num: number
+  title: string
+  children: React.ReactNode
+}) => (
+  <li className="relative rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+    <div className="absolute -top-3 left-6 flex h-8 w-8 items-center justify-center rounded-full bg-[#0066FF] text-sm font-bold text-white">
+      {num}
+    </div>
+    <h3 className="mt-2 text-base font-semibold">{title}</h3>
+    <p className="mt-2 text-sm text-gray-600">{children}</p>
+  </li>
+)
+
+const Testimonial = ({
+  quote,
+  name,
+  role,
+}: {
+  quote: string
+  name: string
+  role: string
+}) => (
+  <figure className="rounded-2xl bg-gray-50 p-6 ring-1 ring-gray-200">
+    <blockquote className="text-gray-700">“{quote}”</blockquote>
+    <figcaption className="mt-4 text-sm">
+      <span className="font-semibold">{name}</span> —{' '}
+      <span className="text-gray-500">{role}</span>
+    </figcaption>
+  </figure>
+)
 
 export default LandingPage
