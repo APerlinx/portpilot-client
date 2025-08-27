@@ -18,26 +18,7 @@ export interface ParseResponse {
   ok: true
   parsed: Profile | string
 }
-
 export interface ParseError {
-  ok: false
-  error: string
-}
-
-export interface RewriteContent {
-  tagline: string
-  bio: string
-  highlights: string[]
-  experience: string[]
-  skillsLine: string
-}
-
-export interface RewriteResponse {
-  ok: true
-  content: RewriteContent | { raw: string }
-}
-
-export interface RewriteError {
   ok: false
   error: string
 }
