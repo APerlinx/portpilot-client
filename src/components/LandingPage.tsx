@@ -3,6 +3,7 @@ import sideImage from '../assets/hero-image.svg'
 import Feature from './Feature'
 import Step from './Step'
 import Testimonial from './Testimonial'
+import ResumeFlow from './ResumeFlow'
 
 const LandingPage = () => {
   return (
@@ -56,6 +57,8 @@ const LandingPage = () => {
           />
         </div>
       </section>
+
+      <ResumeFlow />
 
       {/* TRUST / LOGOS */}
       <section className="bg-white py-10">
