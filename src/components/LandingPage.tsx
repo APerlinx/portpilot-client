@@ -3,7 +3,8 @@ import sideImage from '../assets/hero-image.svg'
 import Feature from './Feature'
 import Step from './Step'
 import Testimonial from './Testimonial'
-import ResumeFlow from './ResumeFlow'
+
+import { Link } from 'react-router-dom'
 
 const LandingPage = () => {
   return (
@@ -22,12 +23,12 @@ const LandingPage = () => {
               modern website version of your professional story — automatically.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 md:flex-row md:justify-start">
-              <a
-                href="#cta"
+              <Link
+                to="/preview"
                 className="inline-flex items-center justify-center rounded-lg bg-black px-7 py-3 text-white shadow-lg transition hover:bg-gray-800"
               >
                 Generate My Site
-              </a>
+              </Link>
               <a
                 href="#how"
                 className="inline-flex items-center justify-center rounded-lg bg-white/10 px-7 py-3 text-white ring-1 ring-white/30 transition hover:bg-white/20"
@@ -57,8 +58,6 @@ const LandingPage = () => {
           />
         </div>
       </section>
-
-      <ResumeFlow />
 
       {/* TRUST / LOGOS */}
       <section className="bg-white py-10">
