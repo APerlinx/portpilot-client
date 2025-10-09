@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
-import { PreviewSite } from './components/gen/PreviewSite'
+import PreviewSite from './components/gen/PreviewSite'
 
 export default function App() {
   return (

@@ -16,6 +16,10 @@ export async function generateFreeform(resumeText: string): Promise<string> {
   return postJSON<string>(`${API}/api/generate-site-freeform`, { resumeText })
 }
 
+export async function generateFullPage(resumeText: string): Promise<string> {
+  return postJSON<string>(`${API}/api/generate-site-html`, { resumeText })
+}
+
 export async function publishSite(payload: {
   html: string
   meta?: Record<string, unknown>

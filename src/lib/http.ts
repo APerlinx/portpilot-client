@@ -6,7 +6,6 @@ export async function postJSON<T>(url: string, body: unknown): Promise<T> {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
   })
-  // /api/generate-site-freeform returns HTML, not JSON
   const contentType = res.headers.get('content-type') || ''
   if (contentType.includes('application/json')) {
     const json = await res.json()
