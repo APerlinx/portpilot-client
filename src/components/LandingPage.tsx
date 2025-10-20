@@ -24,7 +24,7 @@ const LandingPage = () => {
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 md:flex-row md:justify-start">
               <Link
-                to="/preview"
+                to="/generator"
                 className="inline-flex items-center justify-center rounded-lg bg-black px-7 py-3 text-white shadow-lg transition hover:bg-gray-800"
               >
                 Generate My Site

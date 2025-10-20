@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react'
-import { uploadResume, generateFullPage, publishSite } from '../../lib/api'
+import { publishSite } from '../lib/api'
+import UploadFile from '../components/GenPage/UploadFile'
+import Generate from '../components/GenPage/Generate'
 
-export default function PreviewSite() {
-  const [file, setFile] = useState<File | null>(null)
+export default function Gen() {
   const [resumeText, setResumeText] = useState('')
   const [loading, setLoading] = useState<
     'idle' | 'extract' | 'generate' | 'publish'
@@ -14,59 +15,12 @@ export default function PreviewSite() {
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const [usePaste, setUsePaste] = useState(false)
 
-  async function onExtract() {
-    if (!file) return
-    try {
-      setError(null)
-      setLoading('extract')
-      const res = await uploadResume(file)
-      if (!res.ok || !res.text)
-        throw new Error(res.error || 'Could not extract text')
-      setResumeText(res.text)
-    } catch (e) {
-      if (e instanceof Error) setError(e.message || 'Extraction failed')
-    } finally {
-      setLoading('idle')
-    }
-  }
-
-  async function onGenerate() {
-    const text = resumeText.trim()
-    if (!text) return setError('Please upload a resume or paste text first.')
-    try {
-      setError(null)
-      setLoading('generate')
-      setPreviewLoading(true)
-      const html = await generateFullPage(text)
-      setHtml(html)
-
-      const iframe = iframeRef.current
-      if (iframe) {
-        const doc = iframe.contentDocument
-        if (doc) {
-          doc.open()
-          doc.write(html)
-          doc.close()
-        }
-      }
-    } catch (e) {
-      if (e instanceof Error) {
-        setError(e.message || 'Generation failed')
-      } else {
-        setError('Generation failed')
-      }
-      setPreviewLoading(false)
-    } finally {
-      setLoading('idle')
-    }
-  }
-
   async function onPublish() {
     if (!html) return
     try {
       setError(null)
       setLoading('publish')
-      const res = await publishSite({ html }) // your stub
+      const res = await publishSite({ html })
       if (!res.ok) throw new Error(res.notice || 'Publishing not wired yet')
       alert(res.url ? `Published at ${res.url}` : 'Publish OK')
     } catch (e) {
@@ -97,33 +51,14 @@ export default function PreviewSite() {
       <div className="mt-8 grid gap-8 md:grid-cols-2">
         {/* Left controls */}
         <div className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium">
-              Upload resume (PDF/DOCX/TXT)
-            </label>
-            <input
-              type="file"
-              accept=".pdf,.docx,.txt"
-              onChange={(e) => setFile(e.target.files?.[0] || null)}
-              className="mt-1 w-full rounded border px-3 py-2"
-            />
-            <div className="mt-2 flex items-center gap-3">
-              <button
-                onClick={onExtract}
-                disabled={!file || loading !== 'idle'}
-                className="rounded bg-gray-900 px-4 py-2 text-white disabled:opacity-50"
-              >
-                {loading === 'extract' ? 'Extracting…' : 'Extract text'}
-              </button>
-              <button
-                type="button"
-                onClick={() => setUsePaste((v) => !v)}
-                className="text-sm text-gray-600 underline"
-              >
-                {usePaste ? 'Hide paste area' : 'Paste resume text instead'}
-              </button>
-            </div>
-          </div>
+          <UploadFile
+            setError={setError}
+            loading={loading}
+            setLoading={setLoading}
+            setUsePaste={setUsePaste}
+            usePaste={usePaste}
+            setResumeText={setResumeText}
+          />
 
           {usePaste && (
             <div>
@@ -141,13 +76,15 @@ export default function PreviewSite() {
           )}
 
           <div>
-            <button
-              onClick={onGenerate}
-              disabled={!resumeText.trim() || loading !== 'idle'}
-              className="rounded bg-blue-600 px-5 py-2.5 font-semibold text-white disabled:opacity-50"
-            >
-              {loading === 'generate' ? 'Generating…' : 'Generate My Site'}
-            </button>
+            <Generate
+              resumeText={resumeText}
+              loading={loading}
+              setError={setError}
+              setLoading={setLoading}
+              setPreviewLoading={setPreviewLoading}
+              setHtml={setHtml}
+              iframeRef={iframeRef}
+            />
           </div>
 
           {error && (
@@ -221,7 +158,6 @@ export default function PreviewSite() {
             className="h-[80vh] w-full"
             sandbox="allow-same-origin allow-popups allow-forms allow-pointer-lock allow-scripts"
             onLoad={() => {
-              // when new HTML is written, load fires → hide loader
               setPreviewLoading(false)
             }}
           />
