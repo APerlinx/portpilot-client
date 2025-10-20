@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react'
-import { publishSite } from '../lib/api'
 import UploadFile from '../components/GenPage/UploadFile'
 import Generate from '../components/GenPage/Generate'
+import Publish from '../components/GenPage/Publish'
+import RetryButton from '../components/GenPage/RetryButton'
 
 export default function Gen() {
   const [resumeText, setResumeText] = useState('')
@@ -14,31 +15,6 @@ export default function Gen() {
 
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const [usePaste, setUsePaste] = useState(false)
-
-  async function onPublish() {
-    if (!html) return
-    try {
-      setError(null)
-      setLoading('publish')
-      const res = await publishSite({ html })
-      if (!res.ok) throw new Error(res.notice || 'Publishing not wired yet')
-      alert(res.url ? `Published at ${res.url}` : 'Publish OK')
-    } catch (e) {
-      if (e instanceof Error) setError(e.message || 'Publish failed')
-    } finally {
-      setLoading('idle')
-    }
-  }
-
-  function resetForPremiumTryAgain() {
-    setHtml(null)
-    const doc = iframeRef.current?.contentDocument
-    if (doc) {
-      doc.open()
-      doc.write('<!doctype html><title>…</title>')
-      doc.close()
-    }
-  }
 
   return (
     <div className="mx-auto max-w-8xl px-6 py-12">
@@ -97,24 +73,14 @@ export default function Gen() {
             <div className="space-y-3">
               <div className="text-sm text-gray-500">Looks good?</div>
               <div className="flex flex-wrap gap-3">
-                <button
-                  onClick={onPublish}
-                  disabled={loading === 'publish'}
-                  className="rounded bg-emerald-600 px-4 py-2 text-white disabled:opacity-50"
-                >
-                  {loading === 'publish' ? 'Publishing…' : 'Publish'}
-                </button>
+                <Publish
+                  html={html}
+                  loading={loading}
+                  setError={setError}
+                  setLoading={setLoading}
+                />
 
-                <button
-                  onClick={resetForPremiumTryAgain}
-                  className="rounded border px-4 py-2"
-                  title="Premium"
-                >
-                  Try again{' '}
-                  <span className="ml-1 rounded bg-yellow-100 px-2 py-0.5 text-xs text-yellow-800">
-                    Premium
-                  </span>
-                </button>
+                <RetryButton setHtml={setHtml} iframeRef={iframeRef} />
               </div>
             </div>
           )}
