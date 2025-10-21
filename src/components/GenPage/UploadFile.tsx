@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import { uploadResume } from '../../lib/api'
+import type { Phase } from '../../types/ui'
 
 type UploadFileProps = {
   setError: React.Dispatch<React.SetStateAction<string | null>>
-  loading: 'idle' | 'extract' | 'generate' | 'publish'
-  setLoading: React.Dispatch<
-    React.SetStateAction<'idle' | 'extract' | 'generate' | 'publish'>
-  >
+  loading: Phase
+  setLoading: React.Dispatch<React.SetStateAction<Phase>>
   setUsePaste: React.Dispatch<React.SetStateAction<boolean>>
   usePaste: boolean
   setResumeText: React.Dispatch<React.SetStateAction<string>>

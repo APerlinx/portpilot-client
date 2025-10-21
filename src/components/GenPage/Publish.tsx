@@ -1,12 +1,11 @@
 import { publishSite } from '../../lib/api'
+import type { Phase } from '../../types/ui'
 
 type PublishProps = {
   html: string | null
-  loading: 'idle' | 'extract' | 'generate' | 'publish'
+  loading: Phase
   setError: React.Dispatch<React.SetStateAction<string | null>>
-  setLoading: React.Dispatch<
-    React.SetStateAction<'idle' | 'extract' | 'generate' | 'publish'>
-  >
+  setLoading: React.Dispatch<React.SetStateAction<Phase>>
 }
 
 export default function Publish({
