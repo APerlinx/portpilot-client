@@ -10,10 +10,8 @@ type Props = {
   setHtml: React.Dispatch<React.SetStateAction<string | null>>
   setError: (msg: string | null) => void
 
-  // progress hooks (owned by parent so the overlay can use them)
   setProgress: React.Dispatch<React.SetStateAction<number>>
   setProgressLabel: React.Dispatch<React.SetStateAction<string>>
-  // optional: open modal after success
   setModalOpen?: (v: boolean) => void
 }
 
