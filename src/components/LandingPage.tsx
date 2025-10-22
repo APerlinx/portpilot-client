@@ -1,8 +1,7 @@
-import wave from '../assets/wave-haikei.svg'
-import sideImage from '../assets/hero-image.svg'
+import wave from '../assets/wave.svg'
+import sideImage from '../assets/hero-image.png'
 import Feature from './Feature'
 import Step from './Step'
-import Testimonial from './Testimonial'
 
 import { Link } from 'react-router-dom'
 
@@ -10,22 +9,22 @@ const LandingPage = () => {
   return (
     <main className="text-gray-900 antialiased">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#0066FF]">
-        <div className="mx-auto grid min-h-[80vh] max-w-7xl grid-cols-1 items-center gap-10 px-6 py-24 md:min-h-[100vh] md:grid-cols-2">
+      <section className="relative overflow-hidden bg-[#3B9797]">
+        <div className="mx-auto grid min-h-[80vh] max-w-7xl grid-cols-1 items-center gap-10 lg:gap-40 px-6 py-24 md:min-h-[100vh] md:grid-cols-2">
           {/* Left */}
           <div className="text-center md:text-left">
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
               Turn your resume into a{' '}
-              <span className="text-black">Live Portfolio</span>
+              <span className="text-third">Live Portfolio</span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-white/90 md:mx-0">
               Upload your CV and let PortPilot analyze, rewrite, and build a
-              modern website version of your professional story — automatically.
+              modern website version of your professional story, automatically.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 md:flex-row md:justify-start">
               <Link
                 to="/generator"
-                className="inline-flex items-center justify-center rounded-lg bg-black px-7 py-3 text-white shadow-lg transition hover:bg-gray-800"
+                className="inline-flex items-center justify-center rounded-lg bg-third px-7 py-3 text-white shadow-lg transition hover:bg-gray-800"
               >
                 Generate My Site
               </Link>
@@ -38,14 +37,40 @@ const LandingPage = () => {
             </div>
           </div>
 
-          {/* Right */}
-          <div className="flex items-center justify-center">
-            <img
-              src={sideImage}
-              alt="PortPilot generated portfolio preview"
-              className="h-auto w-[520px] max-w-full drop-shadow-xl"
-              loading="eager"
-            />
+          {/* Right – 3D styled preview mockup */}
+          <div className="relative flex items-center justify-center perspective-1000 z-10">
+            <div className="relative transform-gpu rotate-y-6 rotate-x-2 scale-[0.98] transition-transform duration-700 hover:rotate-y-0 hover:scale-100">
+              <img
+                src={sideImage}
+                alt="PortPilot generated portfolio preview"
+                loading="eager"
+                className="w-[520px] max-w-full rounded-2xl border border-white/10 shadow-[0_25px_70px_-10px_rgba(0,0,0,0.45)]"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow:
+                    '0 20px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.1) inset',
+                }}
+              />
+
+              {/* Subtle light reflection overlay */}
+              <div
+                className="pointer-events-none absolute inset-0 rounded-2xl"
+                style={{
+                  background:
+                    'linear-gradient(120deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 45%, rgba(255,255,255,0.15) 100%)',
+                  mixBlendMode: 'overlay',
+                }}
+              />
+
+              {/* Glow underneath */}
+              <div
+                className="absolute left-1/2 top-full h-10 w-[80%] -translate-x-1/2 rounded-full blur-3xl"
+                style={{
+                  background:
+                    'radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 70%)',
+                }}
+              />
+            </div>
           </div>
         </div>
 
@@ -80,21 +105,28 @@ const LandingPage = () => {
       <section id="features" className="bg-white py-20">
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-center text-3xl font-bold">Features</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-gray-600">
+            Everything you need to go from resume to live portfolio. fast,
+            polished, and mobile-first.
+          </p>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <Feature
               emoji="📄"
               title="Smart CV Parsing"
-              text="Upload PDF, DOCX or LinkedIn export — we extract roles, dates, skills, and achievements."
+              text="Upload PDF, DOCX or LinkedIn export. we extract roles, dates, skills, and achievements."
+              variant="primary"
             />
             <Feature
               emoji="🎨"
               title="Beautiful Templates"
               text="Clean, responsive themes with smart typography and spacing out of the box."
+              variant="third"
             />
             <Feature
               emoji="🚀"
               title="Instant Publishing"
-              text="Preview instantly, then deploy to a custom URL — no code needed."
+              text="Preview instantly, then deploy to a custom URL. no code needed."
+              variant="fourth"
             />
           </div>
         </div>
@@ -104,48 +136,33 @@ const LandingPage = () => {
       <section id="how" className="bg-gray-50 py-20">
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-center text-3xl font-bold">How it works</h2>
-          <ol className="mx-auto mt-12 grid max-w-4xl gap-8 sm:grid-cols-3">
-            <Step num={1} title="Upload">
-              Drag & drop your resume (PDF/DOCX). We parse structure & content.
+          <p className="mx-auto mt-4 max-w-2xl text-center text-gray-600">
+            A simple three-step flow that turns your resume into a live,
+            shareable portfolio.
+          </p>
+
+          <ol className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-3">
+            <Step num={1} title="Upload or Paste">
+              Upload your resume (PDF/DOCX) or paste text. You can edit and
+              tweak the extracted content before generating your site.
             </Step>
-            <Step num={2} title="Polish">
-              Pick a template. PortPilot rewrites blurbs for web readability.
+            <Step num={2} title="Generate (AI)">
+              Click Generate, our OpenAI-powered engine receives your resume,
+              creates a fully styled HTML site tailored to your experience, and
+              returns it instantly.
             </Step>
-            <Step num={3} title="Publish">
-              Preview live, tweak details, then deploy to your URL.
+            <Step num={3} title="Preview, Edit & Publish">
+              Preview or download your generated site, make small edits in the
+              UI if you like, then publish to make it live. quick and simple.
             </Step>
           </ol>
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-3xl font-bold">
-            Loved by candidates
-          </h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            <Testimonial
-              quote="Went from PDF to a polished site in minutes — got 2 interviews the same week."
-              name="Maya K."
-              role="Frontend Developer"
-            />
-            <Testimonial
-              quote="The copy rewrite made my experience sound clear and impactful."
-              name="Daniel P."
-              role="Data Analyst"
-            />
-            <Testimonial
-              quote="Publishing to a custom URL was one click. Clean, fast, professional."
-              name="Avi S."
-              role="Product Designer"
-            />
-          </div>
-        </div>
-      </section>
+      {/* TESTIMONIALS (removed) */}
 
       {/* FINAL CTA */}
-      <section id="cta" className="bg-gray-50 py-24">
+      <section id="cta" className=" py-24">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="text-3xl font-extrabold">Ready to stand out?</h2>
           <p className="mx-auto mt-3 max-w-2xl text-gray-600">
@@ -155,7 +172,7 @@ const LandingPage = () => {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#"
-              className="inline-flex items-center justify-center rounded-lg bg-[#0066FF] px-8 py-4 font-semibold text-white shadow-lg transition hover:brightness-95"
+              className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 font-semibold text-white shadow-lg transition hover:brightness-95"
             >
               Upload CV & Generate
             </a>

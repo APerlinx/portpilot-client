@@ -47,14 +47,14 @@ export default function Gen() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-primary/10 to-bg text-text">
       {/* App chrome / top bar */}
       <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 text-sm hover:bg-gray-50"
+              className="inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 text-sm hover:bg-primary/5"
               aria-label="Back to home"
             >
               <svg
@@ -74,11 +74,11 @@ export default function Gen() {
               Home
             </Link>
             <span className="font-semibold">PortPilot</span>
-            <span className="text-gray-400">/</span>
-            <span className="text-gray-600">Generate</span>
+            <span className="text-muted">/</span>
+            <span className="text-text-weak">Generate</span>
           </div>
 
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-text-weak">
             {phase === 'generate'
               ? 'Generating…'
               : html
@@ -98,7 +98,7 @@ export default function Gen() {
                 <h1 className="text-xl font-semibold tracking-tight">
                   Build your site
                 </h1>
-                <p className="mt-1 text-sm text-gray-600">
+                <p className="mt-1 text-sm text-text-weak">
                   Upload, generate, then preview & publish.
                 </p>
               </div>
@@ -144,7 +144,7 @@ export default function Gen() {
                     setError={setError}
                     setProgress={setProgress}
                     setProgressLabel={setProgressLabel}
-                    setModalOpen={setModalOpen} // auto-open modal after success if you want
+                    setModalOpen={setModalOpen}
                   />
                 </div>
               </div>
@@ -154,7 +154,7 @@ export default function Gen() {
             {html && phase !== 'generate' && (
               <div className="mt-6 rounded-2xl border bg-white p-5 shadow-sm ring-1 ring-black/5">
                 <h3 className="text-base font-semibold">Next steps</h3>
-                <p className="mt-1 text-sm text-gray-600">
+                <p className="mt-1 text-sm text-text-weak">
                   Open the large preview, publish, or try again.
                 </p>
 
@@ -162,17 +162,8 @@ export default function Gen() {
                   <button
                     type="button"
                     onClick={() => setModalOpen(true)}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border px-5 py-3 text-sm font-medium shadow-sm transition hover:bg-gray-50"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-transparent bg-primary/10 px-5 py-3 text-sm font-medium text-primary shadow-sm transition hover:bg-primary/20"
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                    >
-                      <path d="M4 5h16v14H4z" />
-                      <path d="M7 8h10v8H7z" fill="white" />
-                    </svg>
                     Open Preview
                   </button>
 
@@ -199,7 +190,7 @@ export default function Gen() {
               className="pointer-events-none absolute -inset-x-10 -top-10 h-64 rounded-[48px] opacity-40 blur-3xl"
               style={{
                 background:
-                  'radial-gradient(60% 50% at 30% 20%, rgba(59,130,246,.18), transparent), radial-gradient(50% 50% at 70% 20%, rgba(168,85,247,.15), transparent)',
+                  'radial-gradient(60% 50% at 30% 20%, rgb(var(--color-main-rgb) / 0.18), transparent), radial-gradient(50% 50% at 70% 20%, rgb(var(--color-third-rgb) / 0.12), transparent)',
               }}
             />
 
@@ -213,7 +204,7 @@ export default function Gen() {
 
                   <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
                     <div
-                      className="h-full rounded-full bg-gray-900 transition-[width]"
+                      className="h-full rounded-full bg-primary transition-[width]"
                       style={{
                         width: `${Math.max(
                           3,
@@ -239,7 +230,7 @@ export default function Gen() {
             {phase !== 'generate' && !html && (
               <div className="relative grid min-h-[72vh] place-items-center">
                 <div className="text-center">
-                  <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-black/90 text-white shadow-lg ring-4 ring-black/5">
+                  <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-primary text-white shadow-lg ring-4 ring-black/5">
                     <svg
                       viewBox="0 0 24 24"
                       width="22"
@@ -251,7 +242,7 @@ export default function Gen() {
                     </svg>
                   </div>
                   <h2 className="text-lg font-semibold">Ready when you are</h2>
-                  <p className="mt-1 text-sm text-gray-600">
+                  <p className="mt-1 text-sm text-text-weak">
                     Click{' '}
                     <span className="font-medium">Generate my website</span> to
                     build a live preview.
@@ -264,7 +255,7 @@ export default function Gen() {
               <div className="relative grid min-h-[72vh] place-items-center p-10">
                 <div className="w-full max-w-xl text-center">
                   <h2 className="text-lg font-semibold">Preview is ready</h2>
-                  <p className="mt-1 text-sm text-gray-600">
+                  <p className="mt-1 text-sm text-text-weak">
                     Open the large preview, publish, or start over with changes.
                   </p>
 
@@ -272,16 +263,25 @@ export default function Gen() {
                     <button
                       type="button"
                       onClick={() => setModalOpen(true)}
-                      className="inline-flex items-center justify-center gap-2 rounded-xl border px-6 py-3 text-sm font-medium shadow-sm transition hover:bg-gray-50"
+                      className="inline-flex items-center justify-center gap-2 rounded-xl border border-transparent bg-primary/10 px-6 py-3 text-sm font-medium text-primary shadow-sm transition hover:bg-primary/20"
                     >
                       <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
                         viewBox="0 0 24 24"
-                        width="18"
-                        height="18"
-                        fill="currentColor"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-fullscreen-icon lucide-fullscreen"
                       >
-                        <path d="M4 5h16v14H4z" />
-                        <path d="M7 8h10v8H7z" fill="white" />
+                        <path d="M3 7V5a2 2 0 0 1 2-2h2" />
+                        <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+                        <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+                        <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+                        <rect width="10" height="8" x="7" y="8" rx="1" />
                       </svg>
                       Open Preview
                     </button>
@@ -301,7 +301,7 @@ export default function Gen() {
 
                   {/* Quick links */}
                   {blobUrl && (
-                    <div className="mt-5 flex items-center justify-center gap-3 text-xs text-gray-500">
+                    <div className="mt-5 flex items-center justify-center gap-3 text-xs text-text-weak">
                       <a
                         className="underline-offset-2 hover:underline"
                         href={blobUrl}

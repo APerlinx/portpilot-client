@@ -10,3 +10,31 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+:root {
+  --color-main-rgb: 59 151 151; /* 3B9797 */
+  --color-secondary-rgb: 22 71 106; /* 16476A */
+  --color-third-rgb: 19 36 64; /* 132440 */
+  --color-fourth-rgb: 191 9 47; /* BF092F */
+  --color-main: #3b9797;
+  --color-secondary: #16476a;
+  --color-third: #132440;
+  --color-fourth: #bf092f;
+
+  /* Text and background */
+  --color-bg: #ffffff;
+  --color-text: #111827; /* default text (near-black) */
+  --color-text-weak: rgba(17, 24, 39, 0.65);
+
+  /* Grays */
+  --gray-100: #f8fafc;
+  --gray-200: #f1f5f9;
+  --gray-300: #e2e8f0;
+  --gray-400: #cbd5e1;
+  --gray-500: #94a3b8;
+  --gray-600: #64748b;
+  --gray-700: #334155;
+
+  /* Borders / soft */
+  --border-soft: rgba(17, 24, 39, 0.08);
+}
