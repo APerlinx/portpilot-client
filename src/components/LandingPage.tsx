@@ -10,7 +10,7 @@ const LandingPage = () => {
     <main className="text-gray-900 antialiased">
       {/* HERO */}
       <section className="relative overflow-hidden bg-[#3B9797]">
-        <div className="mx-auto  grid min-h-[80vh] max-w-7xl 2xl:max-w-full grid-cols-1 items-center gap-10 2xl:gap-0 px-6 py-24 pt-1 2xl:px-24 md:min-h-[100vh] md:grid-cols-2">
+        <div className="mx-auto grid min-h-[80vh] max-w-7xl 2xl:max-w-full grid-cols-1 items-center gap-10 2xl:gap-0 px-6 py-24 pt-12 sm:pt-1 2xl:px-24 md:min-h-[100vh] md:grid-cols-2">
           {/* Left */}
           <div className="text-center md:text-left">
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl 2xl:text-8xl">
@@ -44,11 +44,11 @@ const LandingPage = () => {
                 src={sideImage}
                 alt="PortPilot generated portfolio preview"
                 loading="eager"
-                className="w-[520px] 2xl:w-[620px] max-w-full rounded-2xl border border-white/10 shadow-[0_25px_70px_-10px_rgba(0,0,0,0.45)]"
+                className="w-[420px] sm:w-[520px] 2xl:w-[620px] max-w-full rounded-2xl border border-white/8"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow:
-                    '0 20px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.1) inset',
+                    '0 24px 60px rgba(0,0,0,0.35), 0 12px 30px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.06) inset',
                 }}
               />
 
@@ -64,10 +64,11 @@ const LandingPage = () => {
 
               {/* Glow underneath */}
               <div
-                className="absolute left-1/2 top-full h-10 w-[80%] -translate-x-1/2 rounded-full blur-3xl"
+                className="absolute left-1/2 top-full h-12 w-[78%] -translate-x-1/2 rounded-full blur-3xl"
                 style={{
                   background:
-                    'radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 70%)',
+                    'radial-gradient(circle, rgba(59,151,151,0.22) 0%, rgba(59,151,151,0.08) 40%, transparent 80%)',
+                  transform: 'translateY(6px)',
                 }}
               />
             </div>
@@ -79,7 +80,7 @@ const LandingPage = () => {
           <img
             src={wave}
             alt=""
-            className="block h-32 w-full select-none object-cover md:h-40"
+            className="block h-24 sm:h-32 w-full select-none object-cover md:h-40"
           />
         </div>
       </section>
