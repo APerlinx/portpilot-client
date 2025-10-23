@@ -10,7 +10,7 @@ const LandingPage = () => {
     <main className="text-gray-900 antialiased">
       {/* HERO */}
       <section className="relative overflow-hidden bg-[#3B9797]">
-        <div className="mx-auto grid min-h-[80vh] max-w-7xl 2xl:max-w-full grid-cols-1 items-center gap-10 2xl:gap-0 px-6 py-24 2xl:px-24 md:min-h-[100vh] md:grid-cols-2">
+        <div className="mx-auto  grid min-h-[80vh] max-w-7xl 2xl:max-w-full grid-cols-1 items-center gap-10 2xl:gap-0 px-6 py-24 pt-1 2xl:px-24 md:min-h-[100vh] md:grid-cols-2">
           {/* Left */}
           <div className="text-center md:text-left">
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl 2xl:text-8xl">
@@ -39,7 +39,7 @@ const LandingPage = () => {
 
           {/* Right – 3D styled preview mockup */}
           <div className="relative flex items-center justify-center perspective-1000 z-10">
-            <div className="relative transform-gpu rotate-y-6 rotate-x-2 scale-[0.98] transition-transform duration-700 hover:rotate-y-0 hover:scale-100">
+            <div className="relative transform-gpu scale-[0.98] transition-transform duration-700 hover:scale-100 tilt-animate">
               <img
                 src={sideImage}
                 alt="PortPilot generated portfolio preview"
