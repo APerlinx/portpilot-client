@@ -10,27 +10,27 @@ const LandingPage = () => {
     <main className="text-gray-900 antialiased">
       {/* HERO */}
       <section className="relative overflow-hidden bg-[#3B9797]">
-        <div className="mx-auto grid min-h-[80vh] max-w-7xl grid-cols-1 items-center gap-10 lg:gap-40 px-6 py-24 md:min-h-[100vh] md:grid-cols-2">
+        <div className="mx-auto grid min-h-[80vh] max-w-7xl 2xl:max-w-full grid-cols-1 items-center gap-10 2xl:gap-0 px-6 py-24 2xl:px-24 md:min-h-[100vh] md:grid-cols-2">
           {/* Left */}
           <div className="text-center md:text-left">
-            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl 2xl:text-8xl">
               Turn your resume into a{' '}
               <span className="text-third">Live Portfolio</span>
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-white/90 md:mx-0">
+            <p className="mx-auto mt-5 max-w-2xl text-white/90 md:mx-0 2xl:text-lg">
               Upload your CV and let PortPilot analyze, rewrite, and build a
               modern website version of your professional story, automatically.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 md:flex-row md:justify-start">
               <Link
                 to="/generator"
-                className="inline-flex items-center justify-center rounded-lg bg-third px-7 py-3 text-white shadow-lg transition hover:bg-gray-800"
+                className="inline-flex items-center justify-center rounded-lg 2xl:text-lg bg-third px-7 py-3 text-white shadow-lg transition hover:bg-gray-800"
               >
                 Generate My Site
               </Link>
               <a
                 href="#how"
-                className="inline-flex items-center justify-center rounded-lg bg-white/10 px-7 py-3 text-white ring-1 ring-white/30 transition hover:bg-white/20"
+                className="inline-flex items-center justify-center rounded-lg 2xl:text-lg bg-white/10 px-7 py-3 text-white ring-1 ring-white/30 transition hover:bg-white/20"
               >
                 See how it works
               </a>
@@ -44,7 +44,7 @@ const LandingPage = () => {
                 src={sideImage}
                 alt="PortPilot generated portfolio preview"
                 loading="eager"
-                className="w-[520px] max-w-full rounded-2xl border border-white/10 shadow-[0_25px_70px_-10px_rgba(0,0,0,0.45)]"
+                className="w-[520px] 2xl:w-[620px] max-w-full rounded-2xl border border-white/10 shadow-[0_25px_70px_-10px_rgba(0,0,0,0.45)]"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow:
@@ -87,7 +87,7 @@ const LandingPage = () => {
       {/* TRUST / LOGOS */}
       <section className="bg-white py-10">
         <div className="mx-auto max-w-7xl px-6">
-          <p className="mb-6 text-center text-sm uppercase tracking-widest text-gray-500">
+          <p className="mb-6 text-center text-sm uppercase tracking-widest text-gray-500 2xl:text-lg">
             Portfolios that feel professional
           </p>
           <div className="grid grid-cols-2 items-center justify-items-center gap-6 opacity-70 sm:grid-cols-3 md:grid-cols-6">
