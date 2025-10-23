@@ -1,5 +1,3 @@
-// TODO : Close when scrolling
-
 import { memo, useCallback, useEffect, useId, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/logo.svg'
@@ -32,27 +30,36 @@ const Header = memo(function Header() {
   const closeMenu = useCallback(() => setOpen(false), [])
   const toggleMenu = useCallback(() => setOpen((s) => !s), [])
 
-  // Close on outside click / Escape
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
       const headerEl = headerRef.current
       if (!headerEl) return
-      // If click is inside the header, ignore
       if (e.target instanceof Node && headerEl.contains(e.target)) return
       setOpen(false)
     }
-
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpen(false)
     }
-
     document.addEventListener('mousedown', onDocClick)
     document.addEventListener('keydown', onKey)
+
+    /* Touch events */
+    const handleTouch = (e: TouchEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    if (open) {
+      document.addEventListener('touchstart', handleTouch)
+    }
+    /* ------ */
+
     return () => {
       document.removeEventListener('mousedown', onDocClick)
       document.removeEventListener('keydown', onKey)
+      document.removeEventListener('touchstart', handleTouch)
     }
-  }, [])
+  }, [open])
 
   useEffect(() => {
     if (!open || !menuRef.current) return
