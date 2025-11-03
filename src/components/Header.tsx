@@ -1,3 +1,5 @@
+// TODO : FIX logo + logo color + logo text
+// TODO : BUG - X wont close menu ( only touch close it , probably cause of touch)
 import { memo, useCallback, useEffect, useId, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/logo.svg'
@@ -45,6 +47,11 @@ const Header = memo(function Header() {
 
     /* Touch events */
     const handleTouch = (e: TouchEvent) => {
+      const headerEl = headerRef.current
+      // ignore touches that start inside the header (toggle button / logo)
+      if (headerEl && e.target instanceof Node && headerEl.contains(e.target))
+        return
+
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setOpen(false)
       }
@@ -158,7 +165,7 @@ const Header = memo(function Header() {
         aria-modal="true"
         aria-labelledby={menuButtonId}
         aria-hidden={!open}
-        className="z-50 md:hidden border-t border-gray-50"
+        className="z-40 md:hidden border-t border-gray-50"
       >
         <div className="bg-white shadow-2xl">
           <div
