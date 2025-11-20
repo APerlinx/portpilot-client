@@ -6,6 +6,7 @@ import PreviewModal from '../components/PreviewModal'
 import Generate from '../components/GenPage/Generate'
 import type { Phase } from '../types/ui'
 import { Link } from 'react-router-dom'
+import GenPageFooter from '../components/GenPageFooter'
 
 export default function Gen() {
   // left panel state
@@ -92,7 +93,7 @@ export default function Gen() {
       <main className="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 py-8 sm:px-6 lg:px-8">
         {/* LEFT: Sticky control panel */}
         <aside className="col-span-12 lg:col-span-4">
-          <div className="sticky top-[5rem]">
+          <div className="">
             <div className="rounded-2xl border bg-white shadow-sm ring-1 ring-black/5">
               <div className="border-b px-5 py-4">
                 <h1 className="text-xl font-semibold tracking-tight">
@@ -335,6 +336,7 @@ export default function Gen() {
         html={html}
         blobUrl={blobUrl}
       />
+      <GenPageFooter />
     </div>
   )
 }

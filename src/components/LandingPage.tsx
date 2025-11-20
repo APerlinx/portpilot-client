@@ -39,7 +39,9 @@ const LandingPage = () => {
 
           {/* Right – 3D styled preview mockup */}
           <div className="relative flex items-center justify-center perspective-1000 z-10">
-            <div className="relative transform-gpu scale-[0.98] transition-transform duration-700 hover:scale-100 tilt-animate">
+            <div className="relative transform-gpu scale-[0.98] transition-transform duration-700 hover:scale-100">
+              {' '}
+              {/* To turn on animation add - "tilt-animate to className" */}
               <img
                 src={sideImage}
                 alt="PortPilot generated portfolio preview"
@@ -51,7 +53,6 @@ const LandingPage = () => {
                     '0 24px 60px rgba(0,0,0,0.35), 0 12px 30px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.06) inset',
                 }}
               />
-
               {/* Subtle light reflection overlay */}
               <div
                 className="pointer-events-none absolute inset-0 rounded-2xl"
@@ -61,7 +62,6 @@ const LandingPage = () => {
                   mixBlendMode: 'overlay',
                 }}
               />
-
               {/* Glow underneath */}
               <div
                 className="absolute left-1/2 top-full h-12 w-[78%] -translate-x-1/2 rounded-full blur-3xl"

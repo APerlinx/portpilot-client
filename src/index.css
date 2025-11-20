@@ -42,25 +42,20 @@
 /* subtle 3d tilt animation for hero mockup */
 @keyframes tilt-anim {
   0% {
-    transform: perspective(1200px) rotateX(1deg) rotateY(-6deg) translateZ(0);
+    transform: perspective(1200px) rotateX(1deg) rotateY(-40deg) translateZ(0);
   }
   50% {
-    transform: perspective(1200px) rotateX(-1.2deg) rotateY(6deg)
+    transform: perspective(1200px) rotateX(-1.2deg) rotateY(40deg)
       translateZ(2px);
   }
   100% {
-    transform: perspective(1200px) rotateX(1deg) rotateY(-6deg) translateZ(0);
+    transform: perspective(1200px) rotateX(1deg) rotateY(-40deg) translateZ(0);
   }
 }
 
 .tilt-animate {
   transform-style: preserve-3d;
-  animation: tilt-anim 6s ease-in-out infinite;
-}
-
-.tilt-animate:hover {
-  animation-play-state: paused;
-  transform: perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1);
+  animation: tilt-anim 12s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
